@@ -2,6 +2,7 @@ package com.example.astened.mercedesamg_petronas_f1.services;
 
 import com.example.astened.mercedesamg_petronas_f1.entity.Constructors;
 import com.example.astened.mercedesamg_petronas_f1.repository.ConstructorsRepo;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,7 +31,7 @@ public class ConstructorsServiceImpl implements ConstructorsService{
 
     @Override
     public List<Constructors> getAll() {
-        List<Constructors> constructors = constructorsRepo.findAll().stream().collect(Collectors.toList());
+        List<Constructors> constructors = constructorsRepo.findAll(Sort.by("points").descending()).stream().collect(Collectors.toList());
         return constructors;
     }
 
